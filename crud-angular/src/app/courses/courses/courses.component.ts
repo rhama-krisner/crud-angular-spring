@@ -1,30 +1,40 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Observable, catchError, of } from 'rxjs';
+import { CoursesService } from './../services/courses.service';
 import { Course } from './models/course';
+import { MatDialog } from '@angular/material/dialog';
+import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'app-courses',
     templateUrl: './courses.component.html',
     styleUrls: ['./courses.component.scss'],
 })
-export class CoursesComponent {
-    courses: Course[] = [
-        { _id: '00', name: 'Angular', category: 'front-end' },
-        { _id: '01', name: 'React', category: 'front-end' },
-        { _id: '02', name: 'Vue.js', category: 'front-end' },
-        { _id: '03', name: 'Node.js', category: 'back-end' },
-        { _id: '04', name: 'Python', category: 'general-purpose programming' },
-        { _id: '05', name: 'Java', category: 'general-purpose programming' },
-        { _id: '06', name: 'Swift', category: 'iOS development' },
-        { _id: '07', name: 'Kotlin', category: 'Android development' },
-        { _id: '08', name: 'SQL', category: 'database management' },
-        { _id: '09', name: 'AWS', category: 'cloud computing' },
-        { _id: '10', name: 'Machine Learning', category: 'data science' },
-    ];
-    displayedColumns = ['name', 'category'];
-    //displayedColumns = ['id','name', 'category'];
+export class CoursesComponent implements OnInit {
+    faCoffee = faCoffee;
 
-    constructor() {
-        //this.courses = [];
+    courses$: Observable<Course[]>;
+    displayedColumns = ['name', 'category'];
+
+    //coursesService: CoursesService;
+
+    constructor(
+        private coursesService: CoursesService,
+        private dialog: MatDialog
+    ) {
+        this.courses$ = this.coursesService.list().pipe(
+            catchError((error) => {
+                this.onError('Erro ao carregar a lista de cursos.');
+                return of([]);
+            })
+        );
+    }
+
+    onError(errorMgs: string) {
+        this.dialog.open(ErrorDialogComponent, {
+            data: errorMgs,
+        });
     }
 
     ngOnInit() {}
