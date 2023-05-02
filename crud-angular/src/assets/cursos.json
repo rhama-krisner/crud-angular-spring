@@ -1,0 +1,57 @@
+[
+    {
+        "_id": "01",
+        "name": "Angular",
+        "category": "front-end"
+    },
+    {
+        "_id": "02",
+        "name": "React",
+        "category": "front-end"
+    },
+    {
+        "_id": "03",
+        "name": "Vue.js",
+        "category": "front-end"
+    },
+    {
+        "_id": "04",
+        "name": "C++",
+        "category": "back-end"
+    },
+    {
+        "_id": "05",
+        "name": "Java",
+        "category": "back-end"
+    },
+    {
+        "_id": "06",
+        "name": "Python",
+        "category": "back-end"
+    },
+    {
+        "_id": "07",
+        "name": "HTML",
+        "category": "front-end"
+    },
+    {
+        "_id": "08",
+        "name": "C#",
+        "category": "back-end"
+    },
+    {
+        "_id": "09",
+        "name": "JavaScript",
+        "category": "front-end"
+    },
+    {
+        "_id": "10",
+        "name": "SQL",
+        "category": "database"
+    },
+    {
+        "_id": "11",
+        "name": "Flutter Mobile",
+        "category": "mobile"
+    }
+]
