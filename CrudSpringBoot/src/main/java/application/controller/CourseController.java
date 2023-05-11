@@ -2,12 +2,14 @@ package application.controller;
 
 import application.model.Course;
 import application.repository.CourseRepository;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@CrossOrigin("http://localhost:4200/")
 @RestController
 @RequestMapping("/api/cursos")
 public class CourseController {
@@ -18,7 +20,7 @@ public class CourseController {
     }
 
     @GetMapping
-    public List<Course> list(){
+    public List<Course> list() {
         return courseRepository.findAll();
     }
 }

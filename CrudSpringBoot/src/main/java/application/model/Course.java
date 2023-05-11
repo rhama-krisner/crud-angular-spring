@@ -1,5 +1,7 @@
 package application.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -15,4 +17,14 @@ public class Course {
 
     @Column(length = 200, nullable = false)
     private String category;
+
+    public Course(Long id, String name, String category) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+    }
+
+    public Course() {
+
+    }
 }
