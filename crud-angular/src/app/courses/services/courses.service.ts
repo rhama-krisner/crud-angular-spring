@@ -11,15 +11,19 @@ export class CoursesService {
     //private readonly API = '/assets/cursos.json';
     private readonly API = 'http://localhost/api/cursos';
 
-    constructor(private HttpClient: HttpClient) {}
+    constructor(private httpClient: HttpClient) {}
 
     //segundos: number = 10;
 
     list() {
-        return this.HttpClient.get<Course[]>(this.API).pipe(
+        return this.httpClient.get<Course[]>(this.API).pipe(
             first(),
             //delay(this.segundos*1000),
             tap((courses) => console.log(courses))
         );
+    }
+
+    save(record: Partial<Course>) {
+        return this.httpClient.post<Course>(this.API, record).pipe(first());
     }
 }

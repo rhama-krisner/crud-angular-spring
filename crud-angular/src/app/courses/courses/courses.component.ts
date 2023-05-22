@@ -4,7 +4,6 @@ import { CoursesService } from './../services/courses.service';
 import { Course } from './models/course';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -13,10 +12,9 @@ import { ActivatedRoute, Router } from '@angular/router';
     styleUrls: ['./courses.component.scss'],
 })
 export class CoursesComponent implements OnInit {
-    faCoffee = faCoffee;
 
     courses$: Observable<Course[]>;
-    displayedColumns = ['name', 'category', 'actions'];
+    //displayedColumns = ['name', 'category', 'actions'];
 
     //coursesService: CoursesService;
 
@@ -45,6 +43,6 @@ export class CoursesComponent implements OnInit {
     }
 
     onAdd() {
-        this.router.navigate(['new'], {relativeTo: this.route})
+        this.router.navigate(['new'], { relativeTo: this.route });
     }
 }
